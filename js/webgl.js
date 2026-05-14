@@ -12,6 +12,19 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.physicallyCorrectLights = true;
 
+// Post-Processing (Bloom)
+const renderScene = new THREE.RenderPass(scene, camera);
+const bloomPass = new THREE.UnrealBloomPass(
+    new THREE.Vector2(window.innerWidth, window.innerHeight),
+    1.2,  // strength
+    0.5,  // radius
+    0.2   // threshold
+);
+
+const composer = new THREE.EffectComposer(renderer);
+composer.addPass(renderScene);
+composer.addPass(bloomPass);
+
 // Lighting - Cinematic Studio Setup
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
 scene.add(ambientLight);
@@ -159,7 +172,7 @@ function animate() {
     // Add slight mouse parallax to camera
     camera.position.x += (mouseX * 0.002 - camera.position.x) * 0.05;
 
-    renderer.render(scene, camera);
+    composer.render();
 }
 
 animate();
@@ -169,4 +182,5 @@ window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
+    composer.setSize(window.innerWidth, window.innerHeight);
 });
