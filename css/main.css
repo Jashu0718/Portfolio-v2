@@ -316,3 +316,108 @@ footer h2 {
 .back a:hover {
     text-decoration: underline;
 }
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    /* Header */
+    header {
+        flex-direction: column;
+        padding: 1rem 5%;
+        gap: 1rem;
+    }
+    
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.8rem;
+    }
+    
+    nav a {
+        margin-left: 0;
+        font-size: 0.8rem;
+    }
+    
+    .btn-outline {
+        padding: 0.3rem 1rem;
+    }
+
+    /* Hero */
+    .hero {
+        padding-left: 5%;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .hero .title {
+        font-size: 14vw;
+        margin-top: 1rem;
+    }
+    
+    .hero .subtitle {
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+
+    /* Sections */
+    .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 5vh;
+    }
+
+    /* Glass Cards */
+    .glass-card {
+        padding: 2rem !important;
+    }
+    
+    .glass-card h2 {
+        font-size: 2rem;
+    }
+
+    /* Timeline Override */
+    .timeline {
+        padding-left: 1.5rem !important;
+        margin-left: 0.5rem !important;
+    }
+    
+    .timeline-dot {
+        left: -1.9rem !important;
+        width: 10px !important;
+        height: 10px !important;
+    }
+    
+    .timeline-item h3 {
+        font-size: 1.4rem !important;
+    }
+
+    /* Projects */
+    .project-item, .project-item:nth-child(even) {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .project-info h3 {
+        font-size: 1.6rem;
+    }
+    
+    .project-info p {
+        font-size: 1rem;
+    }
+
+    /* Footer */
+    footer h2 {
+        font-size: 12vw;
+        margin-bottom: 2rem;
+    }
+    
+    .contact-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+    
+    .flip-container {
+        width: 100%;
+        max-width: 320px;
+    }
+}
